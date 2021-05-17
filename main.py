@@ -1,58 +1,47 @@
 '''
 05/17/2021
-
-Pygame Intro
-
+Pygame - Intro
 Pygame
-- A Set of Python Modules Designed for Designing video Games
-
-Coordinates in Pygame Window
-- The Top Left Corner of the Screen is (0,0) and Bottom Right is (width, height).
-- Positive x-Direction is to the Right and Negative x-Direction is to the Left.
-- Positive y-Direction is Downwards and Negative y-Direction is Upwards.
-
-Important Pygame Functions
-1. Import the Pygame Library
+- A set of Python modules designed for writing video games
+Coordinates in Pygame window
+- The top left corner of the screen is (0,0) and the bottom right is (width, height).
+- Positive x-direction is to the right and Negative x-direction is to the left.
+- Positive y-direction is downward and Negative y-direction is upward.
+Important pygame code
+1. Import the Pygame library
 import pygame
-
 2. Initialize the Pygame
 pygame.init()
-
-3. Create a Pygame Window with Size (width, height)
-variable1 = pygame.display.set_mode((W, H))
-
-4. Accepting Key Inputs From the User
-pygame.key.get_presses()
-
-5. Setup Delay Time (## in ms, (1s == 1000ms))
+3. Create a Pygame window with sizes (Width, Height)
+variable1 = pygame.display.set_mode((Width,Height))
+4. Accepting key inputs from user
+pygame.key.get_pressed("KEYNAME")
+5. Setup delay time (## in ms, (1s = 1000ms))
 pygame.time.delay(##)
-
-6. Update Frames 
+6. Update frame
 pygame.display.update()
-
-7. Terminate the Pygame at the End
+7. Terminate the Pygame at the end
 pygame.quit()
 '''
 
-# 1.Import the Pygame Library
+# 1.Import the Pygame library
 import pygame
 
-# 2. Initialize the Pygame
+# 2. Initialie Pygame
 pygame.init()
 
-# 3. Make a Pygame Window (width, height)
+# 3. Make a Pygame window (w,h)
 window = pygame.display.set_mode((500, 500))
+# 4. Setup a caption (Game Name) on window to "First Game"
+pygame.display.set_caption("First Pygame")
 
-# 4. Setup a Caption(Game Name) on Window to "First Game"
-pygame.display.set_caption("First PyGame")
-
-# 5. Set Variables and Values (Starting Coordinates)
+# 5. Set variables and values (starting coordinates)
 # Assign 10 to 'x'
 # Assign 10 to 'y'
 x = 10
 y = 10
 
-# 6. Create an Object (width and height) and Speed
+# 6. Create an object (width and height) and speed
 # Assign 10 to 'width'
 # Assign 15 to 'height'
 # Assign 5 to 'speed'
@@ -60,50 +49,50 @@ width = 10
 height = 15
 speed = 5
 
-# 7. Create a Control Variable
+# 7. Create a control variable
 # Assign True to 'run'
 run = True
 
-# 8. Launching a Game with the Control Variable
-while(run):
+# 8. Launching a game with the control variable
+while (run):
 
-	# 9. Set Delay Time to 100ms
+	# 9. Setup delay time to 100ms
 	pygame.time.delay(100)
 
-	# 10. Function the Button
+	# 10. Function the button	
 	for event in pygame.event.get():
-		if(event.type == pygame.QUIT):
-			# 11. Terminate Game When the Button is Pressed
+		if (event.type == pygame.QUIT):
+			# 11. Terminate Game when the button is pressed
 			# Reassign False to 'run'
 			run = False
 
-	# 12. Activate Keys
+	# 12. Activate keys
 	keys = pygame.key.get_pressed()
 
-	# 13. Left Arrow Key Pressds, Then Decrease Value of x
+	# 13. Left arrow key pressed, then decrese value of x
 	if keys[pygame.K_LEFT]:
 		x -= speed
 
-	# 14. Right Arrow Key Pressed, Then Increase Value of x
-	if keys[pygame.K_RIGHT]:
+	# 14. Right arrow key pressed, then increase value of x
+	if keys[pygame.K_RIGHT] :
 		x += speed
 
-	# 15. Up Arrow Key Pressed, Then Decrease Value of y
+	# 15. Up arrow key pressed, then decrease value of y
 	if keys[pygame.K_UP]:
 		y -= speed
 
-	# 16. Down Arrow Key Pressed, Then Increase Value of y
+	# 16. Down arrow key pressed, then increase value of y
 	if keys[pygame.K_DOWN]:
 		y += speed
+	
+	# 19. As the object move, the background update
+	window.fill((0,0,0))
 
-	# 19. As the Object Moves, the Background Update
-	window.fill((0, 0, 0))
+	# 17. Setup a rectangle as a moving obejct
+	pygame.draw.rect(window, (50,150,23), (x,y, width, height)) 
 
-	# 17. Setup a Rectangle as a Moving Object
-	pygame.draw.rect(window, (50, 150, 23), (x, y, width, height))
-
-	# 18. Update the Game 
+	# 18. Update the game
 	pygame.display.update()
 
-# 11. Quit Out of the Game
+# 11. Quit out of the game
 pygame.quit()
